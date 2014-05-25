@@ -16,6 +16,7 @@ Behance Portfolio Page is a [Vanilla JS](http://vanilla-js.com/) plugin with no 
     });
 }(window, document));
 ```
+In file [`request.php`](request.php) you must populate the variable $ client_id with the Client ID of your app created in central [Developers Behance](https://www.behance.net/dev/apps).
 
 ## Browser support
 IE8+ and modern browsers.
