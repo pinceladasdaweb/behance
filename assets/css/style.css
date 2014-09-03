@@ -135,9 +135,6 @@ figure { margin: 0 }
 }
 
 .portfolio-area .portfolio-cover {
-    cursor: -webkit-zoom-in;
-    cursor: -moz-zoom-in;
-    cursor: -zoom-in;
     width: 100%;
 }
 
