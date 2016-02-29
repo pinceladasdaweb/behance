@@ -1,40 +1,45 @@
 module.exports = function (grunt) {
-    pkg: grunt.file.readJSON('package.json'),
+    "use strict";
+
+    var pkg  = grunt.file.readJSON("package.json"),
+        date = new Date();
+
     grunt.initConfig({
+        meta: {
+            banner: '/*! ' + pkg.name + ' ' + pkg.version + ' - ' + pkg.description + ' | (c) ' + date.getFullYear() + ' ' + pkg.author + ' | ' + pkg.licenses[0].type + ' License */'
+        },
         cssmin: {
-            with_banner: {
-                options: {
-                    banner: '/* \n' +
-                        '--------------------------------------\n' +
-                        'Behance Portfolio Page                \n' +
-                        '--------------------------------------\n' +
-                        '+ https://github.com/pinceladasdaweb/Behance-Portfolio-Page \n' +
-                        '+ version 1.0.0 \n' +
-                        '+ Copyright 2014 Pedro Rogerio \n' +
-                        '+ Licensed under the MIT license \n' +
-                        '\n' +
-                        '+ Documentation: https://github.com/pinceladasdaweb/Behance-Portfolio-Page \n' +
-                        '*/'
-                },
+            target: {
                 files: {
-                    'assets/css/style.min.css': ['assets/css/style.css']
+                    'public/css/style.min.css': ['public/css/style.css']
                 }
             }
         },
         uglify: {
             options: {
-                preserveComments: 'all'
+                banner: '<%= meta.banner %>\n'
             },
-            src: {
+            target: {
                 files: {
-                    'assets/js/app.min.js': ['assets/js/app.js']
+                    'public/js/app.min.js': ['public/js/app.js']
                 }
+            }
+        },
+        watch: {
+            css: {
+                files: ['public/css/style.css'],
+                tasks: ['cssmin']
             },
+            js: {
+                files: ['public/js/app.js'],
+                tasks: ['uglify']
+            }
         }
     });
 
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    grunt.registerTask('default', [ 'cssmin', 'uglify' ]);
+    grunt.registerTask('default', [ 'cssmin', 'uglify', ]);
 };
