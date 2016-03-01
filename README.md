@@ -9,7 +9,7 @@ I created a version of [Vanilla JS](http://vanilla-js.com/) based on the origina
 
 ## How to use?
 
-Just fill out the user variable with your Behance username:
+In file [`index.html`](index.html), just fill out the user variable with your Behance username:
 
 ```javascript
 Behance({
