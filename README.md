@@ -16,7 +16,7 @@ Behance({
     user: 'behance-username-here'
 });
 ```
-In file [`request.php`](request.php) you must populate the variable $client_id with the Client ID of your app created in central [Developers Behance](https://www.behance.net/dev/apps).
+In file [`config.php`](config/config.php) you must populate the variable `clientId` with the Client ID of your app created in central [Developers Behance](https://www.behance.net/dev/apps).
 
 ## Browser support
 
