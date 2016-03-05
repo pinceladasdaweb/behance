@@ -1,18 +1,29 @@
 <?php
 
-require_once( './api/Api.php' );
+require_once './vendor/autoload.php';
 
-$user      = isset($_GET['user']) ? $_GET['user'] : NULL;
-$client_id = '<YOUR CLIENT ID HERE>';
+$helperLoader  = new SplClassLoader('Helpers', './vendor');
+$behanceLoader = new SplClassLoader('Behance', './vendor');
 
-$api = new Behance_Api( $client_id );
+$helperLoader->register();
+$behanceLoader->register();
+
+use Helpers\Config;
+use Behance\Behance;
+
+$config = new Config;
+$config->load('./config/config.php');
+
+$api  = new Behance($config->get('behance.clientId'));
+$user = isset($_GET['user']) ? $_GET['user'] : '';
 
 $a = json_decode($api->getUserProfile( $user ), true);
 $b = json_decode($api->getUserProjects( $user ), true);
+
 $merged = array();
-
 $merged = array_merge($a, $b);
+$json   = json_encode($merged);
 
-$json = json_encode($merged);
+header('Content-type: application/json');
 
 echo $json;
