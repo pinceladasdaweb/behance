@@ -30,6 +30,22 @@ class Behance
         return $this->_executeRequest( $endpoint );
     }
 
+    public function render()
+    {
+        $user = isset($_GET['user']) ? $_GET['user'] : '';
+
+        $a = json_decode($this->getUserProfile( $user ), true);
+        $b = json_decode($this->getUserProjects( $user ), true);
+
+        $merged = array();
+        $merged = array_merge($a, $b);
+        $json   = json_encode($merged);
+
+        header('Content-type: application/json');
+
+        echo $json;
+    }
+
     protected function _executeRequest($url)
     {
         $user_agent = "Behance API/PHP (App {$this->_client_id})";
