@@ -5,7 +5,7 @@
 
 ## Motivation
 
-I created a version of [Vanilla JS](http://vanilla-js.com/) based on the original [tuts+](http://webdesign.tutsplus.com/tutorials/how-to-use-the-behance-api-to-build-a-custom-portfolio-web-page--cms-20884). [Demo here](http://www.pinceladasdaweb.com.br/blog/uploads/behance/).
+I created a version of [Vanilla JS](http://vanilla-js.com/) based on the original [tuts+](http://webdesign.tutsplus.com/tutorials/how-to-use-the-behance-api-to-build-a-custom-portfolio-web-page--cms-20884).
 
 ## How to use?
 
